@@ -53,7 +53,10 @@ a {
   background-color: white;
 }
 
-
+.logo-style {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: italic;
+}
 
 .navbar-light .navbar-nav .nav-link:hover {
   color: red;
@@ -144,6 +147,10 @@ label {
   color: black;
 }
 
+.labelColor {
+  color: red;
+}
+
 .alert-box {
   margin-top: 100px;
 }
@@ -204,7 +211,7 @@ form button {
 
 .card {
   box-shadow: 3px 3px 5px grey;
-  max-height: 400px;
+  max-height: 500px;
 }
 
 .card-title {

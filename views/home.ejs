@@ -3,7 +3,7 @@
 
 <head>
   <%- include("./partials/head") %>
-    <title>Blogify</title>
+    <title>Evernote</title>
     <link href="../uploads/style.css" rel="stylesheet">
 </head>
 
@@ -28,7 +28,19 @@
               <%= blog.Title %>
             </h4>
             <p class="card-text fw-bold">
-              <%= blog.BlogerName %><i class="fa-solid fa-circle-check"></i>
+              <%= blog.UserName %><i class="fa-solid fa-circle-check"></i>
+            </p>
+            <p class="card-text fw-bold">
+              <span class="labelColor"> Status : </span>
+              <%= blog.Status %>
+            </p>
+            <p class="card-text fw-bold">
+              <span class="labelColor"> DueDate : </span>
+              <%= blog.DueDate %>
+            </p>
+            <p class="card-text fw-bold">
+              <span class="labelColor"> Priority : </span>
+              <%= blog.Priority %>
             </p>
             <div class="threebtn d-flex gap-2">
               <a href="/view/<%= blog._id %>" class="btn btn-dark">View</a>

@@ -5,7 +5,19 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  BlogerName: {
+  UserName: {
+    type: String,
+    required: true
+  },
+  Status : {
+    type: String,
+    required: true
+  },
+  DueDate: {
+    type: String,
+    required: true
+  },
+  Priority: {
     type: String,
     required: true
   },
@@ -25,6 +37,6 @@ const blogSchema = new mongoose.Schema({
    timestamps: true
 });
 
-const Blog = mongoose.model("Blog", blogSchema);
+const Blog = mongoose.model("Task", blogSchema);
 
 module.exports = Blog

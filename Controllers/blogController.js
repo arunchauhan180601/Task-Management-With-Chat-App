@@ -1,6 +1,6 @@
 const Blog = require("../Model/blogModel");
 const Comment = require("../Model/comment");
-
+const moment = require("moment"); 
 
 function handleGetBlogForm(req, res){
   try {
@@ -24,15 +24,24 @@ async function handleCreateBlog(req, res){
 
     if(!body ||
        !body.title ||
-       !body.blogerName||
-       !body.body 
+       !body.userName||
+       !body.body ||
+       !body.status ||
+       !body.dueDate ||
+       !body.priority
     ){
       return res.status(400).json({message: "Please fill all the fields"});
     }
 
+        // Format the dueDate to DD-MM-YYYY format using moment.js
+        const formattedDueDate = moment(body.dueDate).format("DD-MM-YYYY");
+
     await Blog.create({
       Title: body.title,
-      BlogerName: body.blogerName,
+      UserName: body.userName,
+      Status : body.status,
+      DueDate: formattedDueDate,
+      Priority: body.priority,
       Body: body.body,
       CreatedBy: req.user._id,
       Image: image,
@@ -53,7 +62,7 @@ async function handleGetBlogBeforeEdit(req, res){
    let findBlog =  await Blog.findById(id);
 
    if(!findBlog){
-       return res.status(400).json({ msg: "Blog Not Found"});
+       return res.status(400).json({ msg: "Task Not Found"});
    }
 
    return res.render("edit", {
@@ -73,26 +82,35 @@ async function handleEditTheBlog(req, res){
       const id = req.params.id;
       const body = req.body;
 
+         // Format the dueDate to DD-MM-YYYY format using moment.js
+    const formattedDueDate = moment(body.dueDate).format("DD-MM-YYYY");
+
       if(req.file){
           let image = req.file.path;
 
           await Blog.findByIdAndUpdate(id,{
               Title: body.title,
-              BlogerName: body.blogerName,
+              UserName: body.userName,
+              Status: body.status,
+              DueDate: formattedDueDate,
+              Priority: body.priority,
               Body: body.body,
               Image: image
           })
-          console.log("Blog details Updated with Image");
+          console.log("Task details Updated with Image");
           return res.redirect("/");
       }
       else{
           await Blog.findByIdAndUpdate(id,{
               Title: body.title,
-              BlogerName: body.blogerName,
+              UserName: body.userName,
+              Status: body.status,
+              DueDate: formattedDueDate,
+              Priority: body.priority,
               Body: body.body,
               
           })
-          console.log("Blog details Updated without Image");
+          console.log("Task details Updated without Image");
           return res.redirect("/");
       }
   } catch (error) {
