@@ -116,6 +116,13 @@ a {
 
 }
 
+.headingTag {
+  color: black;
+  text-decoration: underline;
+  font-weight: 700;
+
+}
+
 /* signup */
 .signup-main {
   margin-top: 100px;
@@ -281,12 +288,22 @@ form button {
     height: auto;
 
   }
+
+  .headingContainer {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .viewpageImage {
     width: 100%;
     height: auto;
+  }
+
+  .headingContainer {
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -295,11 +312,33 @@ form button {
     width: 80%;
     height: auto;
   }
+
+  .headingContainer {
+    display: flex;
+    justify-content: center;
+  }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and ((min-width: 993px) and (max-width: 1399px)) {
+  .viewpageImage {
+    width: 80%;
+    height: auto;
+  }
+
+  .headingContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
   .viewpageImage {
     width: 50%;
     height: auto;
+  }
+
+  .headingContainer {
+    display: flex;
+    justify-content: start;
   }
 }
